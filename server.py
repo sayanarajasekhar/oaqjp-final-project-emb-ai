@@ -13,6 +13,8 @@ def hello_world():
 def emotionDetector():
     text_to_analyze = request.args.get('textToAnalyze')
     emotion_scores = emotion_detector(text_to_analyze)
+    if emotion_scores["dominant_emotion"] is None:
+        return "Invalid text! Please try again!"
     return emotion_scores
 
 # Run the app in debug mode if the script is executed directly.
